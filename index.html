@@ -3,76 +3,94 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sunset Letters</title>
+    <title>Italy Trip Landing Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="app" id="app">
-      <section class="screen landing active" id="landingScreen" aria-label="Landing screen">
-        <div class="landing-card pixel-frame">
-          <h1>Sunset Letters</h1>
-          <p>A tiny pixel-art walk through a warm savanna.</p>
-          <button id="playButton" class="primary-btn" type="button">Play</button>
+    <main class="app-shell">
+      <section id="welcome-screen" class="screen screen-active" aria-label="Welcome screen">
+        <div class="collage-overlay"></div>
+        <div class="welcome-card" role="dialog" aria-labelledby="welcome-title">
+          <p class="pixel-chip">Italy adventure</p>
+          <h1 id="welcome-title">Welcome to your trip</h1>
+          <p class="welcome-subtitle">Please enter your name</p>
+
+          <form id="name-form" class="name-form" autocomplete="off">
+            <label class="sr-only" for="traveler-name">Your name</label>
+            <input id="traveler-name" name="travelerName" type="text" maxlength="24" placeholder="e.g., Sofia" required />
+            <button type="submit">Enter</button>
+          </form>
         </div>
       </section>
 
-      <section class="screen game" id="gameScreen" aria-label="Game screen">
-        <div class="sky-glow"></div>
-        <div class="sun"></div>
-        <div class="hills hill-back"></div>
-        <div class="hills hill-front"></div>
+      <section id="map-screen" class="screen" aria-label="Italy map screen">
+        <header class="trip-header">
+          <h2 id="greeting">Hi, traveler</h2>
+          <p id="countdown">0 days until Italy 🇮🇹</p>
+        </header>
 
-        <div class="savanna" id="savanna" aria-hidden="true">
-          <div class="tree-line" id="treeLine"></div>
-          <div class="giraffe" id="giraffe" aria-hidden="true">
-            <div class="giraffe-shadow"></div>
-            <div class="leg leg-back"></div>
-            <div class="leg leg-front"></div>
-            <div class="body"></div>
-            <div class="neck"></div>
-            <div class="head">
-              <span class="ear ear-left"></span>
-              <span class="ear ear-right"></span>
-              <span class="ossicone oss-left"></span>
-              <span class="ossicone oss-right"></span>
-              <span class="eye"></span>
-              <span class="snout"></span>
-            </div>
-            <span class="tail"></span>
-            <div class="spots" aria-hidden="true"></div>
-          </div>
-        </div>
+        <div class="map-wrap">
+          <svg class="italy-map" viewBox="0 0 320 620" role="img" aria-label="Illustrated map of Italy with highlighted cities">
+            <defs>
+              <linearGradient id="landGradient" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#ffd37e" />
+                <stop offset="50%" stop-color="#ffb36c" />
+                <stop offset="100%" stop-color="#f9836b" />
+              </linearGradient>
+              <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+                <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#c45a5f" flood-opacity="0.25" />
+              </filter>
+            </defs>
 
-        <div class="hud">
-          <p class="progress" id="progressText">Letter 0 / 14</p>
-        </div>
-      </section>
+            <path
+              class="italy-shape"
+              filter="url(#softShadow)"
+              d="M108 30
+                 C120 28 133 34 145 47
+                 C158 61 165 75 181 88
+                 C196 101 215 110 222 126
+                 C229 142 226 159 212 174
+                 C197 189 180 204 175 223
+                 C170 241 176 260 194 276
+                 C211 292 220 309 221 327
+                 C222 347 214 363 196 374
+                 C181 383 176 397 186 411
+                 C196 425 208 441 210 456
+                 C212 472 199 482 180 485
+                 C166 487 157 493 154 506
+                 C150 520 141 534 122 540
+                 C101 547 85 537 78 521
+                 C71 506 66 489 55 476
+                 C43 463 38 446 45 431
+                 C53 414 66 404 83 398
+                 C99 392 104 384 99 368
+                 C93 351 82 337 75 320
+                 C67 301 67 282 79 265
+                 C91 248 106 236 111 220
+                 C116 205 108 190 95 177
+                 C82 163 72 147 76 129
+                 C81 109 96 93 104 77
+                 C112 61 110 44 108 30 Z"
+            />
 
-      <section class="screen ending" id="endingScreen" aria-label="Ending screen">
-        <div class="ending-card pixel-frame">
-          <h2>Every letter delivered.</h2>
-          <p>The sun dipped, the savanna listened, and the giraffe stayed.</p>
-          <button id="restartButton" class="primary-btn" type="button">Play Again</button>
+            <ellipse class="sicily" cx="78" cy="571" rx="36" ry="18" />
+            <ellipse class="sardinia" cx="36" cy="486" rx="18" ry="34" />
+          </svg>
+
+          <button class="location rome" data-label="Rome" style="--x: 172px; --y: 283px" aria-label="Rome"></button>
+          <button class="location florence" data-label="Florence" style="--x: 165px; --y: 238px" aria-label="Florence"></button>
+          <button class="location venice" data-label="Venice" style="--x: 198px; --y: 196px" aria-label="Venice"></button>
+          <button class="location amalfi" data-label="Amalfi Coast" style="--x: 172px; --y: 333px" aria-label="Amalfi Coast"></button>
+          <button class="location naples" data-label="Naples" style="--x: 157px; --y: 317px" aria-label="Naples"></button>
         </div>
       </section>
     </main>
-
-    <div class="letter-modal" id="letterModal" aria-hidden="true" role="dialog" aria-labelledby="letterTitle">
-      <div class="letter-shell" id="letterShell">
-        <button class="close-modal" id="closeModalButton" type="button" aria-label="Close letter">×</button>
-
-        <div class="envelope-state" id="envelopeState">
-          <h3 id="letterTitle">A Letter Awaits</h3>
-          <p>Tap to open</p>
-          <button class="open-letter-btn" id="openLetterButton" type="button">Open Envelope</button>
-        </div>
-
-        <article class="letter-state" id="letterState" hidden>
-          <p id="letterMessage"></p>
-          <button class="next-btn" id="continueButton" type="button">Continue</button>
-        </article>
-      </div>
-    </div>
 
     <script src="script.js"></script>
   </body>
